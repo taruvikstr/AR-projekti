@@ -8,6 +8,7 @@ public class PrefabCreator : MonoBehaviour
 {
     [SerializeField] private GameObject dragonPrefab;
     [SerializeField] private Vector3 prefabOffset;
+    [SerializeField] private GameManager gameManager;
 
     private GameObject dragon;
     private ARTrackedImageManager aRTrackedImageManager;
@@ -25,6 +26,8 @@ public class PrefabCreator : MonoBehaviour
         {
             dragon = Instantiate(dragonPrefab, image.transform);
             dragon.transform.position += prefabOffset;
+
+            gameManager.StartGame();
         }
     }
 }

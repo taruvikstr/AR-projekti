@@ -27,4 +27,14 @@ public class DragonController : MonoBehaviour
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(xVal, yVal) * Mathf.Rad2Deg, transform.eulerAngles.z);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+         var scaleChange = new Vector3(-0.05f, -0.05f, -0.05f);
+        if (collision.gameObject.CompareTag("Fly"))
+        {
+            gameObject.transform.localScale += scaleChange;
+            speed += 0.1f;
+        }
+    }
 }
