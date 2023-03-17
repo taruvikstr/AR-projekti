@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonPrefab: {fileID: 130964, guid: c644a2181ac22e740968a7ece97e8f36, type: 3}
-  prefabOffset: {x: 0, y: -0.1, z: 0}
-  gameManager: {fileID: 617660154}
+  prefabOffset: {x: 0, y: -1.5, z: 4}
+  flyPrefab: {fileID: 8863646117885324544, guid: 923dcd09e206eb141bade712bb53970f, type: 3}
 --- !u!114 &614021757
 MonoBehaviour:
   m_ObjectHideFlags: 0

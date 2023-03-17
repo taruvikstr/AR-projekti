@@ -7,11 +7,16 @@ public class DragonController : MonoBehaviour
     [SerializeField] private float speed;
     private FixedJoystick fixedJoystick;
     private Rigidbody rigidBody;
+    private AudioSource audioSource;
+    private GameManager gameManager;
 
     private void OnEnable()
     {
         fixedJoystick = FindObjectOfType<FixedJoystick>();
         rigidBody = gameObject.GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager.StartGame();
     }
 
     private void FixedUpdate()
@@ -28,13 +33,12 @@ public class DragonController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Eat()
     {
-         var scaleChange = new Vector3(-0.05f, -0.05f, -0.05f);
-        if (collision.gameObject.CompareTag("Fly"))
-        {
-            gameObject.transform.localScale += scaleChange;
-            speed += 0.1f;
-        }
+        var scaleChange = new Vector3(0.05f, 0.05f, 0.05f);
+        Debug.Log("chomp");
+        audioSource.Play();
+        gameObject.transform.localScale += scaleChange;
+        speed += 0.1f;
     }
 }
