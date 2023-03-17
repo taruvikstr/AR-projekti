@@ -15,6 +15,7 @@ public class PrefabCreator : MonoBehaviour
     private float timer = 0;
     private bool gameON = false;
 
+
     private void OnEnable()
     {
         aRTrackedImageManager = GetComponent<ARTrackedImageManager>();
@@ -37,22 +38,21 @@ public class PrefabCreator : MonoBehaviour
         if (gameON)
         {
             timer += Time.deltaTime;
-            if (timer > 10f) SpawnFly();
+            if (timer > 5f) SpawnFly();
         }
     }
     public void StartGame()
     {
-        dragon = GameObject.Find("Blue");
+        //dragon = GameObject.FindGameObjectWithTag("Player");
         gameON = true;
         SpawnFly();
     }
 
     public void SpawnFly()
     {
-        Transform randomLocation = dragon.transform;
-        randomLocation.position = new Vector3(randomLocation.transform.position.x + Random.Range(0.5f, 2), randomLocation.transform.position.y, randomLocation.transform.position.z + Random.Range(0.5f, 2));
-        Instantiate(flyPrefab, randomLocation);
+        Instantiate(flyPrefab, new Vector3(dragon.transform.position.x + Random.Range(-4f, 4), dragon.transform.position.y + Random.Range(-2f, 2), dragon.transform.position.z + Random.Range(-4, 4)), Quaternion.identity);
         //Instantiate(flyPrefab, dragon.transform);
         timer = 0;
     }
+
 }
